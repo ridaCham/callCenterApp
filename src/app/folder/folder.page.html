@@ -1,12 +1,50 @@
 <ion-header>
-  <ion-toolbar color="green">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+  <ion-toolbar color="{{loginType ? 'dark' :'success'}}"  >
+    <ion-buttons slot="end">
+      {{userEmail}}
+      <ion-icon name="person-outline" size="large" (click)="login()"></ion-icon>
     </ion-buttons>
-    <ion-title>callCenterApp</ion-title>
+    <ion-title >{{loginType ? 'Login' :'CallCenter'}}</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <div>
+  <ion-searchbar placeholder="Ne aramıştınız ?"> </ion-searchbar>
+  <div *ngIf="!loginType">
+    <ion-list>
+      <ion-item *ngFor="let item of firmalar" [routerLink]="['/detay',item.id]" routerLinkActivate="router-link-activate">
+        <ion-avatar slot="start">
+          <img src="{{item.img}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.ad}}</h2>
+          <h3>{{item.kategory}}</h3>
+          <p>{{item.aciklama}}</p>
+        </ion-label>
+      </ion-item>
 
-<ion-content [fullscreen]="true">
-  
+    </ion-list>
+  </div>
+  </div>
+  <div *ngIf="loginType">    
+    <ion-card class="ortala">
+      <ion-card-header>
+        <ion-card-subtitle>Lütfen </ion-card-subtitle>
+        <ion-card-title>Girişi Yapınız</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating" >Kullanıcı adı</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Şifre</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-button id="loginButton" expand="block" [disabled]="!email || 4>=password.length" (click)="loginSave()">Log in</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

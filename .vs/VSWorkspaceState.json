@@ -5,6 +5,6 @@
     "\\src\\app",
     "\\src\\app\\folder"
   ],
-  "SelectedNode": "\\src\\global.scss",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }

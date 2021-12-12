@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<ion-card>
+  <img src="{{firma.img}}" />
+  <ion-card-header>
+    <ion-card-subtitle>{{firma.kategory}}</ion-card-subtitle>
+    <ion-card-title>{{firma.ad}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+  </ion-card-content>
+</ion-card>
+<ion-list>
+  <ion-item *ngFor="let s of firma.sube">
+    <ion-label>{{s.subeadi}}</ion-label>
+    <ion-badge color="secondary"><a href="tel:{{s.tel}}" style="color: aliceblue;">{{s.tel}}</a></ion-badge>
+  </ion-item>
+</ion-list>
+</ion-content>
